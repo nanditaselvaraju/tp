@@ -60,7 +60,9 @@ public class LoanList {
         loanToPay.pay(amount);
 
         if (loanToPay.isPaid()) {
-            remove(loanToPay);
+            internalList.remove(index); // Automatically notifies ListView
+        } else {
+            internalList.set(index, loanToPay); // Replaces with same object (but triggers update)
         }
     }
 
